@@ -66,3 +66,131 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.discover-gradient {
+  background: linear-gradient(90deg, #ff1744, #2979ff); /* red → blue */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+/* Full-screen hero section, but let Bootstrap's container center it */
+.home-hero {
+  position: relative;
+  z-index: 0;
+  min-height: calc(100vh - 80px);  /* full screen minus navbar height-ish */
+  display: flex;
+  justify-content: center;          /* center horizontally */
+  align-items: center;              /* center vertically */
+  padding: 2rem 0;
+  overflow: hidden;
+}
+
+/* Background image is fixed to the viewport, NOT limited by the container */
+.home-hero-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("./images/home-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: blur(6px);
+  transform: scale(1.05);          /* hide blur edges */
+  z-index: -1;                     /* behind all page content */
+}
+
+/* Foreground wrapper that actually holds the card */
+.home-hero-content {
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;     /* center card horizontally */
+    padding: 0 1rem;
+    align-items: center;
+}
+
+/* Card styling */
+.home-card {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #000;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Gradient text for "SerbTour" */
+.discover-gradient {
+  background: linear-gradient(90deg, #ff1744, #2979ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Fade-in animation on first load */
+.fade-in {
+  opacity: 0;
+  animation: fadeInUp 0.7s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Wrapper so height doesn't jump while text animates */
+.slide-text-wrapper {
+  position: relative;
+  min-height: 80px;             /* adjust for your text size */
+  margin-top: 1.5rem;
+}
+
+/* Both texts are stacked on top of each other */
+.slide-text {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 100%;
+}
+
+/* When not animating, just show normally */
+.text-static {
+  opacity: 1;
+  transform: translateX(-50%);
+}
+
+/* Old text fades & slides up */
+.text-out {
+  opacity: 1;
+  transform: translateX(-50%);
+  animation: slideTextOut 0.35s ease-out forwards;
+}
+
+/* New text starts slightly down + transparent, then fades in */
+.text-in {
+  opacity: 0;
+  transform: translateX(-50%) translateY(10px);
+  animation: slideTextIn 0.35s ease-out forwards;
+}
+
+@keyframes slideTextOut {
+  to {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
+
+@keyframes slideTextIn {
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
