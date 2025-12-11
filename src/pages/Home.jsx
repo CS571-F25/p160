@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Carousel from "react-bootstrap/Carousel";
+import homeBg from "../assets/home-bg.jpg";
 
 const SLIDES = [
   {
@@ -55,7 +56,7 @@ export default function Home() {
 
   return (
     <div className="home-hero pt-4 mt-5">
-      <div className="home-hero-bg" />
+      <div className="home-hero-bg" style={{ backgroundImage: `url(${homeBg})` }} />
 
       <div className="home-hero-content">
         <Card
