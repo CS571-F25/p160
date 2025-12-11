@@ -47,19 +47,16 @@ export default function Home() {
     setIsAnimatingText(true);
   };
 
-  // Turn off animation flag after animation finishes
   useEffect(() => {
     if (!isAnimatingText) return;
-    const timer = setTimeout(() => setIsAnimatingText(false), 350); // match CSS duration
+    const timer = setTimeout(() => setIsAnimatingText(false), 350);
     return () => clearTimeout(timer);
   }, [isAnimatingText]);
 
   return (
-    <div className="home-hero">
-      {/* Full-screen blurred background */}
+    <div className="home-hero pt-4 mt-5">
       <div className="home-hero-bg" />
 
-      {/* Foreground content */}
       <div className="home-hero-content">
         <Card
           className="text-center shadow-sm home-card fade-in"
@@ -97,14 +94,11 @@ export default function Home() {
               your own custom itinerary.
             </Card.Text>
 
-            {/* Animated text for Nightlife / Historical / Food */}
             <div className="mt-3 mb-3 slide-text-wrapper">
               {isAnimatingText && (
-                <div
-                  className="slide-text text-out"
-                  key={SLIDES[prevIndex].key}
-                >
-                  <h4>{SLIDES[prevIndex].title}</h4>
+                <div className="slide-text text-out" key={SLIDES[prevIndex].key}>
+                  {/* h2 for proper heading order; styled to look like h4 */}
+                  <h2 className="h4">{SLIDES[prevIndex].title}</h2>
                   <p className="mb-0">{SLIDES[prevIndex].caption}</p>
                 </div>
               )}
@@ -115,7 +109,8 @@ export default function Home() {
                 }`}
                 key={activeSlide.key}
               >
-                <h4>{activeSlide.title}</h4>
+                {/* h2 for proper heading order; styled to look like h4 */}
+                <h2 className="h4">{activeSlide.title}</h2>
                 <p className="mb-0">{activeSlide.caption}</p>
               </div>
             </div>

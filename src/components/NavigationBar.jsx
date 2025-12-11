@@ -11,6 +11,7 @@ import {
   FaGlassCheers,
   FaLandmark,
   FaRoute,
+  FaInfoCircle
 } from "react-icons/fa";
 
 export default function NavigationBar() {
@@ -54,6 +55,11 @@ export default function NavigationBar() {
             <Nav.Link as={NavLink} to="/itinerary">
               <FaRoute className="me-1" />
               Itinerary
+            </Nav.Link>
+
+            <Nav.Link as={NavLink} to="/travel-tips">
+                <FaInfoCircle className="me-1" />
+                Travel Tips
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

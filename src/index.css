@@ -1,17 +1,37 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+  
+    /* Force light look */
+    color-scheme: light;
+    color: #212529;
+    background-color: #ffffff;
+  
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  html, body, #root {
+    height: 100%;
+  }
+  
+  body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    display: block;
+    background: #ffffff;   /* <-- important */
+  }
+  
+  #root {
+    width: 100%;
+    min-height: 100vh;
+    background: #ffffff;   /* <-- important */
+  }
+  
 
 a {
   font-weight: 500;
@@ -22,13 +42,24 @@ a:hover {
   color: #535bf2;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
+html, body, #root {
+    height: 100%;
+  }
+  
+  body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    display: block;
+    background: #ffffff;   /* <-- important */
+  }
+  
+  #root {
+    width: 100%;
+    min-height: 100vh;
+    background: #ffffff;   /* <-- important */
+  }
+  
 
 h1 {
   font-size: 3.2em;
@@ -194,3 +225,380 @@ button:focus-visible {
     transform: translateX(-50%) translateY(0);
   }
 }
+
+.flash-alert {
+    animation: flashIn 220ms ease-out both;
+  }
+  
+  @keyframes flashIn {
+    from {
+      opacity: 0;
+      transform: translate(-50%, 10px); /* keep centering + slide up */
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+  }
+
+  .flash-in {
+    animation: flashIn 220ms ease-out both;
+  }
+  
+  .flash-out {
+    animation: flashOut 250ms ease-in both;
+  }
+  
+  @keyframes flashIn {
+    from {
+      opacity: 0;
+      transform: translate(-50%, 12px);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+  }
+  
+  @keyframes flashOut {
+    from {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+    to {
+      opacity: 0;
+      transform: translate(-50%, -10px);
+    }
+  }
+  
+  
+  /* Page header styling */
+  .food-header-card {
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+  }
+  
+  .food-title {
+    letter-spacing: -0.5px;
+  }
+  
+  /* Big card styling */
+  .food-spot-card {
+    border-radius: 16px;
+    overflow: hidden; /* keeps carousel edges clean */
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  
+  .food-spot-img {
+    height: 320px;        /* makes it feel more immersive */
+    object-fit: cover;
+  }
+
+  /* Fade + slide up */
+.fade-up {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeUp 500ms ease-out forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Optional: stagger helper */
+.fade-delay-1 { animation-delay: 80ms; }
+.fade-delay-2 { animation-delay: 160ms; }
+.fade-delay-3 { animation-delay: 240ms; }
+.fade-delay-4 { animation-delay: 320ms; }
+
+
+.page-bg {
+    min-height: calc(100vh - 80px);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* nice effect when scrolling */
+  }
+  
+  .page-bg-overlay {
+    /* keep your existing rules */
+    min-height: inherit;
+    padding: 1.25rem 1.25rem 2rem;   /* <-- adds left/right padding too */
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(2px);
+  
+    border-radius: 16px;            /* optional: looks more “panel-like” */
+  }
+  
+  @media (min-width: 992px) {
+    .page-bg-overlay {
+      padding: 1.5rem 2rem 2.5rem;  /* more breathing room on large screens */
+    }
+  }
+  
+
+  /* Nightlife page tweaks */
+.nightlife-overlay {
+  background: rgba(10, 10, 14, 0.72) !important; /* dark overlay */
+  backdrop-filter: blur(2px);
+}
+
+.nightlife-spot-img {
+  height: 340px;      /* slightly taller for nightlife */
+  object-fit: cover;
+}
+
+.night-badge {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+/*/
+/* Full-page nightlife background + dim layer */
+.nightlife-bg {
+  position: fixed;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  z-index: -2;
+}
+
+.nightlife-dim {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 14, 0.72);
+  z-index: -1;
+}
+
+/* Make header card actually dark (force override) */
+.nightlife-header-card {
+  background: rgba(20, 20, 26, 0.88) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+.nightlife-title {
+  color: #fff;
+}
+
+.nightlife-header-card p {
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+
+/* Nightlife listing cards */
+.nightlife-spot-card {
+  background: rgba(18, 18, 24, 0.92) !important;
+  border: 1px solid rgba(255, 255, 255, 0.10) !important;
+  border-radius: 16px;
+  overflow: hidden;
+}
+/* Ensure app content sits above body pseudo background */
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* Nightlife full-screen background */
+body.nightlife-mode::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: var(--nightlife-bg);
+  background-size: cover;
+  background-position: center;      /* change to: center top; if you want more action up top */
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+/* Dark overlay for the vibe */
+body.nightlife-mode::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 14, 0.70); /* tweak opacity if needed */
+  z-index: 0;
+}
+
+.hist-hero {
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+  
+  .hist-toc {
+    position: sticky;
+    top: 92px; /* below your fixed navbar */
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 16px;
+    padding: 1rem;
+  }
+  
+  .hist-toc-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+  
+  .hist-toc-link {
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+  
+    padding: 0.6rem 0.75rem;
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,0.06);
+    background: rgba(255, 255, 255, 0.85);
+    color: #212529;
+  }
+  
+  .hist-toc-link:hover {
+    background: rgba(0, 0, 0, 0.04);
+  }
+  
+  .hist-toc-link:focus-visible {
+    outline: 3px solid rgba(41, 121, 255, 0.6);
+    outline-offset: 2px;
+  }
+  
+  
+  .hist-toc-sub {
+    font-size: 0.85rem;
+    color: rgba(33, 37, 41, 0.7);
+  }
+  
+  /* Each site section */
+  .hist-section {
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.08);
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  }
+  
+  .hist-media {
+    width: 100%;
+  }
+  
+  .hist-hero-img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .hist-content {
+    padding: 1.25rem;
+  }
+  
+  .hist-title {
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.3px;
+  }
+  
+  .hist-lede {
+    color: rgba(33, 37, 41, 0.75);
+    margin-bottom: 1rem;
+  }
+  
+  /* Modern “magazine” grid */
+  .hist-grid {
+    display: grid;
+    gap: 1rem;
+  }
+  
+  @media (min-width: 992px) {
+    .hist-grid {
+      grid-template-columns: 1.4fr 1fr;
+      align-items: start;
+    }
+    .hist-grid .hist-block:nth-child(3) {
+      grid-column: 1 / -1;
+    }
+  }
+  
+  .hist-block {
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 14px;
+    padding: 0.9rem;
+    background: rgba(255, 255, 255, 0.88);
+  }
+  
+  .it-hero {
+    background: rgba(255,255,255,0.92);
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 16px;
+  }
+  
+  .it-main {
+    border-radius: 16px;
+  }
+  
+  .it-side {
+    position: sticky;
+    top: 92px; /* below navbar */
+  }
+  
+  .it-list .list-group-item {
+    border-radius: 14px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+  
+  .it-row {
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+  }
+  
+  .it-handle {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    background: rgba(0,0,0,0.06);
+    color: rgba(0,0,0,0.55);
+    user-select: none;
+  }
+  
+  .it-dragging {
+    opacity: 0.85;
+    transform: scale(0.995);
+  }
+  
+
+  .travel-hero {
+    border-radius: 16px;
+    border: 1px solid rgba(0,0,0,0.06);
+    background: rgba(255,255,255,0.92);
+  }
+  
+  .travel-pill {
+    border-radius: 999px;
+    padding: 0.4rem 0.7rem;
+    letter-spacing: 0.2px;
+  }
+  
+  .travel-title {
+    letter-spacing: -0.6px;
+    line-height: 1.15;
+  }
+  
+  .nightlife-page .form-label {
+    color: #fff !important;
+  }
+  
+  /* Optional: make the input text/placeholder readable too */
+  .nightlife-page .form-control,
+  .nightlife-page .form-select {
+    color: #fff;
+    background-color: rgba(0,0,0,0.35);
+    border-color: rgba(255,255,255,0.25);
+  }
+  
+  .nightlife-page .form-control::placeholder {
+    color: rgba(255,255,255,0.7);
+  }
+  
